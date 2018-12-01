@@ -24,26 +24,28 @@ public class Enemy : MovingObject {
 
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
-        //Check if skipMove is true, if so set it to false and skip this turn.
+        ////Check if skipMove is true, if so set it to false and skip this turn.
         if (SkipMove)
         {
             SkipMove = false;
-            return;
 
+            return;
         }
+
+
 
         //Call the AttemptMove function from MovingObject.
         base.AttemptMove<T>(xDir, yDir);
 
-        //Now that Enemy has moved, set skipMove to true to skip next move.
+        ////Now that Enemy has moved, set skipMove to true to skip next move.
         SkipMove = true;
+       
     }
 
     public void MoveEnemy()
     {
         int xDir = 0;
         int yDir = 0;
-
 
         if (Mathf.Abs(Target.position.x - transform.position.x) < float.Epsilon)
         {
@@ -53,8 +55,8 @@ public class Enemy : MovingObject {
         {
             xDir = Target.position.x > transform.position.x ? 1 : -1;
         }
-
         AttemptMove<Player>(xDir, yDir);
+
     }
 
     protected override void OnCantMove<T>(T Component)
