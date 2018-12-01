@@ -12,13 +12,13 @@ public class Player : MovingObject {
     public float RestartLevelDelay = 1f;
     public Text FoodText;
 
-    public AudioClip MoveSound1;
-    public AudioClip MoveSound2;
-    public AudioClip EatSound1;
-    public AudioClip EatSound2;
-    public AudioClip DrinkSound1;
-    public AudioClip DrinkSound2;
-    public AudioClip GameOverSound;
+   // public AudioClip MoveSound1;
+   // public AudioClip MoveSound2;
+   // public AudioClip EatSound1;
+   // public AudioClip EatSound2;
+   // public AudioClip DrinkSound1;
+   // public AudioClip DrinkSound2;
+   // public AudioClip GameOverSound;
 
 
     private Animator animator;
@@ -115,7 +115,7 @@ public class Player : MovingObject {
         RaycastHit2D Hit;
         if (Move(XDir,YDir,out Hit))
         {
-            SoundManager.Instance.RandomiseSFX(MoveSound1, MoveSound2);
+      //      SoundManager.Instance.RandomiseSFX(MoveSound1, MoveSound2);
         }
 
         CheckIfGameOver();
@@ -137,7 +137,7 @@ public class Player : MovingObject {
         {
             Food += PointsPerFood;
             FoodText.text = "+ " + PointsPerFood + "Food: " + Food;
-            SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
+         //   SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
             Other.gameObject.SetActive(false);
         }
 
@@ -145,7 +145,7 @@ public class Player : MovingObject {
         {
             Food += PointPerSoda;
             FoodText.text = "+ " + PointPerSoda + "Food: " + Food;
-            SoundManager.Instance.RandomiseSFX(DrinkSound1, DrinkSound2);
+       //     SoundManager.Instance.RandomiseSFX(DrinkSound1, DrinkSound2);
             Other.gameObject.SetActive(false);
         }
     }
@@ -160,7 +160,7 @@ public class Player : MovingObject {
 
     private void Restart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void LoseFood(int Loss)
@@ -180,8 +180,8 @@ public class Player : MovingObject {
     {
         if(Food<= 0)
         {
-            SoundManager.Instance.PlaySingle(GameOverSound);
-            SoundManager.Instance.MusicSource.Stop();
+           // SoundManager.Instance.PlaySingle(GameOverSound);
+           // SoundManager.Instance.MusicSource.Stop();
             GameManager.Instance.GameOver();
         }
     }
