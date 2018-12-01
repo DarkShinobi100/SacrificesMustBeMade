@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public float LevelStartDelay = 2f;
     public static GameManager Instance = null;
     public BoardManager BoardScript;
-    public int PlayerFoodPoints = 100;
+    public int PlayerFriendPoints = 10;
+    public int PlayerStamina = 100;
 
     [HideInInspector] public bool PlayersTurn = true;
 

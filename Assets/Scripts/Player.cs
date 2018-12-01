@@ -11,18 +11,21 @@ public class Player : MovingObject {
     public int PointPerSoda = 20;
     public float RestartLevelDelay = 1f;
     public Text FriendText;
+    public Text StaminaText;
 
-   // public AudioClip MoveSound1;
-   // public AudioClip MoveSound2;
-   // public AudioClip EatSound1;
-   // public AudioClip EatSound2;
-   // public AudioClip DrinkSound1;
-   // public AudioClip DrinkSound2;
-   // public AudioClip GameOverSound;
+
+    // public AudioClip MoveSound1;
+    // public AudioClip MoveSound2;
+    // public AudioClip EatSound1;
+    // public AudioClip EatSound2;
+    // public AudioClip DrinkSound1;
+    // public AudioClip DrinkSound2;
+    // public AudioClip GameOverSound;
 
 
     private Animator animator;
     private int Friend;
+    private int Stamina;
 
     private Vector2 TouchOrigin = -Vector2.one; 
 
@@ -32,16 +35,20 @@ public class Player : MovingObject {
 
         animator = GetComponent<Animator>();
 
-        Friend = GameManager.Instance.PlayerFoodPoints;
+        Friend = GameManager.Instance.PlayerFriendPoints;
 
         FriendText.text = "Friends: " + Friend;
+
+        Stamina = GameManager.Instance.PlayerStamina;
+        StaminaText.text = "Stamina: " + Stamina;
 
         base.Start();
 	}
 
     private void OnDisable()
     {
-        GameManager.Instance.PlayerFoodPoints = Friend;
+        GameManager.Instance.PlayerFriendPoints = Friend;
+        GameManager.Instance.PlayerStamina = Stamina;
     }
 
 
@@ -142,6 +149,10 @@ public class Player : MovingObject {
       //      SoundManager.Instance.RandomiseSFX(MoveSound1, MoveSound2);
         }
 
+        //costs 1 stamina to move
+        Stamina = Stamina - 1;
+        StaminaText.text = "Stamina: " + Stamina;
+
         CheckIfGameOver();
 
         GameManager.Instance.PlayersTurn = false;
@@ -159,16 +170,16 @@ public class Player : MovingObject {
 
         else if(Other.tag == "Food")
         {
-            Friend += PointsPerFood;
-            FriendText.text = "+ " + PointsPerFood + "Friend: " + Friend;
+            Stamina += PointsPerFood;
+            StaminaText.text = "+ " + PointsPerFood + "Stamina: " + Stamina;
          //   SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
             Other.gameObject.SetActive(false);
         }
 
         else if (Other.tag == "Soda")
         {
-            Friend += PointPerSoda;
-            FriendText.text = "+ " + PointPerSoda + "Friends: " + Friend;
+            Stamina += PointPerSoda;
+            StaminaText.text = "+ " + PointPerSoda + "Stamina: " + Stamina;
        //     SoundManager.Instance.RandomiseSFX(DrinkSound1, DrinkSound2);
             Other.gameObject.SetActive(false);
         }
@@ -187,7 +198,7 @@ public class Player : MovingObject {
         SceneManager.LoadScene(1);
     }
 
-    public void LoseFood(int Loss)
+    public void SacrificeFriend(int Loss)
     {
         animator.SetTrigger("PlayerHit");
 
@@ -202,7 +213,8 @@ public class Player : MovingObject {
 
     private void CheckIfGameOver()
     {
-        if(Friend <= 0)
+        //you need friends AND stamina or you lose
+        if(Stamina <= 0 || Friend <=0)
         {
            // SoundManager.Instance.PlaySingle(GameOverSound);
            // SoundManager.Instance.MusicSource.Stop();

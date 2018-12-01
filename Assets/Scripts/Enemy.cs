@@ -65,6 +65,6 @@ public class Enemy : MovingObject
         animator.SetTrigger("EnemyAttack");
    //     SoundManager.Instance.RandomiseSFX(EnemyAttack1, EnemyAttack2);
 
-        HitPlayer.LoseFood(PlayerDamage);
+        HitPlayer.SacrificeFriend(PlayerDamage);
     }
 }
