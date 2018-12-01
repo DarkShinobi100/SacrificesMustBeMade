@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4547336819156888}
   - component: {fileID: 212375699138421440}
   - component: {fileID: 61511105636448172}
-  - component: {fileID: 114269653543653348}
+  - component: {fileID: 114194240858398788}
   m_Layer: 8
   m_Name: Wall8
   m_TagString: Untagged
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114269653543653348
+--- !u!114 &114194240858398788
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,13 +75,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575451566894854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 162a78618f7fea34b8fbec1be4d152e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a8d9a55c9695a24eba1e08935380751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgSprite: {fileID: 21300108, guid: fbe1e7b94bb1a4a099d5bcb15a00141c, type: 3}
-  HP: 4
-  ChopSound1: {fileID: 8300000, guid: 4c2332bc8245b474dad63074059bb755, type: 3}
-  ChopSound2: {fileID: 8300000, guid: f6aaac83be9e0493493aace800b76619, type: 3}
+  dmgSprite: {fileID: 21300054, guid: fbe1e7b94bb1a4a099d5bcb15a00141c, type: 3}
+  HP: 3
+  ChopSound1: {fileID: 0}
+  ChopSound2: {fileID: 0}
 --- !u!212 &212375699138421440
 SpriteRenderer:
   m_ObjectHideFlags: 1
