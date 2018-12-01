@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95303197696645696}
   - component: {fileID: 61930558042736942}
   - component: {fileID: 50299123910264182}
-  - component: {fileID: 114491444605265418}
+  - component: {fileID: 114389270684582476}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -107,7 +107,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114491444605265418
+--- !u!114 &114389270684582476
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,16 +115,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1897869641955838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec1615b53185e44c8d4a9dfbadfd2b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c0185098e3c3a241bf9895354a10bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveTime: 0.1
   blockingLayer:
+    serializedVersion: 2
     m_Bits: 256
   WallDamage: 1
   PointsPerFood: 10
   PointPerSoda: 20
   RestartLevelDelay: 1
+  FoodText: {fileID: 0}
+  MoveSound1: {fileID: 0}
+  MoveSound2: {fileID: 0}
+  EatSound1: {fileID: 0}
+  EatSound2: {fileID: 0}
+  DrinkSound1: {fileID: 0}
+  DrinkSound2: {fileID: 0}
+  GameOverSound: {fileID: 0}
 --- !u!212 &212868787268212512
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -157,8 +166,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -900995045
-  m_SortingLayer: 0
+  m_SortingLayerID: -1914095439
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
