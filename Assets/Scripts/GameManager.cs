@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     public float TurnDelay = 0.1f;
     public float LevelStartDelay = 2f;
@@ -20,16 +21,16 @@ public class GameManager : MonoBehaviour {
     private List<Enemy> enemies;
     private bool EnemiesMoving;
     private bool DoingSetUp;
+    private bool firstRun = true;
 
-
-	// Use this for initialization
-	void Awake ()
+    // Use this for initialization
+    void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-        else if(Instance != null)
+        else if (Instance != null)
         {
             Destroy(gameObject);
         }
@@ -39,14 +40,29 @@ public class GameManager : MonoBehaviour {
         enemies = new List<Enemy>();
         BoardScript = GetComponent<BoardManager>();
         InitGame();
-	}
+    }
 
-    //This is called each time a scene is loaded.
-    void OnLevelWasLoaded(int index)
+    void OnEnable()
     {
-        //Add one to our level number.
+        //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        if (firstRun)
+        {
+            firstRun = false;
+            return;
+        }
+
         Level++;
-        //Call InitGame to initialize our level.
         InitGame();
     }
 
@@ -72,7 +88,7 @@ public class GameManager : MonoBehaviour {
         DoingSetUp = false;
     }
 
-	public void GameOver()
+    public void GameOver()
     {
         LevelText.text = "After " + Level + " number of days. You Starved.";
         LevelImage.SetActive(true);
@@ -80,10 +96,10 @@ public class GameManager : MonoBehaviour {
     }
 
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
-		if(PlayersTurn || EnemiesMoving || DoingSetUp)
+        if (PlayersTurn || EnemiesMoving || DoingSetUp)
         {
             return;
         }
@@ -91,7 +107,7 @@ public class GameManager : MonoBehaviour {
         {
             StartCoroutine(MoveEnemies());
         }
-	}
+    }
 
     public void AddEnemiesToList(Enemy Script)
     {
@@ -109,7 +125,7 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(TurnDelay);
         }
 
-        for (int i= 0; i< enemies.Count; i++)
+        for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].MoveEnemy();
             yield return new WaitForSeconds(enemies[i].MoveTime);
