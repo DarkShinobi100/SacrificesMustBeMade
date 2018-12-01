@@ -55,7 +55,8 @@ MonoBehaviour:
   TurnDelay: 0.1
   LevelStartDelay: 2
   BoardScript: {fileID: 0}
-  PlayerFoodPoints: 100
+  PlayerFriendPoints: 10
+  PlayerStamina: 100
   PlayersTurn: 1
 --- !u!114 &114951894646236224
 MonoBehaviour:
@@ -94,12 +95,16 @@ MonoBehaviour:
   - {fileID: 1431850628936820, guid: ac09566a8ded2e54fb158d2039d1096a, type: 2}
   - {fileID: 1210120320975204, guid: fc88caefe133857419f8c01a49e9c2da, type: 2}
   - {fileID: 1575451566894854, guid: 6d8b54d8f70573742a13cfcc4aeb825f, type: 2}
-  FoodTiles:
-  - {fileID: 1290234493100270, guid: 36a67bb788a12464ba6c0b504b83d9fc, type: 2}
+  PowerUpTiles:
   - {fileID: 1848466262583062, guid: 28cfcc156097d354da08de68f6f5cd13, type: 2}
+  - {fileID: 1553436966693762, guid: 643cb943c1722ff4cb76f9920c7c14b7, type: 2}
+  - {fileID: 1290234493100270, guid: 36a67bb788a12464ba6c0b504b83d9fc, type: 2}
   enemyTiles:
   - {fileID: 1672407658366624, guid: 16edacf9f8f8b3846b8c5c0889ae2874, type: 2}
   - {fileID: 1695693900944830, guid: 82596c797f446fe4b9333ed1c8585044, type: 2}
+  - {fileID: 1336401452069780, guid: 5cee3ac053a84c64c9a3f457b4ffa6ea, type: 2}
+  - {fileID: 1712928540991394, guid: 8cde45cdf30ea0941957278b1cffc61c, type: 2}
+  - {fileID: 1677216329622898, guid: 9ed9e15f028b2b849af513827a83fc80, type: 2}
   OuterWallTiles:
   - {fileID: 1423595130674292, guid: d9d64e76185a2a34784010d33b9f7ba3, type: 2}
   - {fileID: 1656129261584894, guid: 467a8486203b8684cbf003bac68dfabe, type: 2}

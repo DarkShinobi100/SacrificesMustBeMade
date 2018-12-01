@@ -28,7 +28,7 @@ public class BoardManager : MonoBehaviour {
     public GameObject Exit;
     public GameObject[] FloorTiles;
     public GameObject[] WallTiles;
-    public GameObject[] FoodTiles;
+    public GameObject[] PowerUpTiles;
     public GameObject[] enemyTiles;
     public GameObject[] OuterWallTiles;
 
@@ -103,7 +103,7 @@ public class BoardManager : MonoBehaviour {
         BoardSetUp();
         InitialiseList();
         LayoutObjectAtRandom(WallTiles, WallCount.Minimum, WallCount.Maximum);
-        LayoutObjectAtRandom(FoodTiles, FoodCount.Minimum, FoodCount.Maximum);
+        LayoutObjectAtRandom(PowerUpTiles, FoodCount.Minimum, FoodCount.Maximum);
         //set amount of enemies to spawn
         int EnemyCount = (int)Mathf.Log(level*5, 2f);
 

@@ -5,10 +5,10 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Enemy2
+  m_Name: Enemy5
   m_Controller: {fileID: 9100000, guid: 25504db58b866b9479070ad4742fe59c, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 3536250c0eb428b49ad6dca8a82f5b35, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 581bc586a17a15844a5a49b494fa3eac, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1313485e55817db4d8c6fb635c21e748, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 0fc7988b869ff9e4e877041788747a3d, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 61a0cade7e7a5a945b61ca4092992c2a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0e75f81351cf6d94a807a6ed0d649981, type: 2}

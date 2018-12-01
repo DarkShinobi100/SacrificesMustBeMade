@@ -9,6 +9,7 @@ public class Player : MovingObject {
     public int WallDamage = 1;
     public int PointsPerFood = 10;
     public int PointPerSoda = 20;
+    public int PointsPerFriend = 1;
     public float RestartLevelDelay = 1f;
     public Text FriendText;
     public Text StaminaText;
@@ -153,6 +154,9 @@ public class Player : MovingObject {
         Stamina = Stamina - 1;
         StaminaText.text = "Stamina: " + Stamina;
 
+        //show current amount of friends
+        FriendText.text = "Friends: " + Friend;
+
         CheckIfGameOver();
 
         GameManager.Instance.PlayersTurn = false;
@@ -181,6 +185,13 @@ public class Player : MovingObject {
             Stamina += PointPerSoda;
             StaminaText.text = "+ " + PointPerSoda + "Stamina: " + Stamina;
        //     SoundManager.Instance.RandomiseSFX(DrinkSound1, DrinkSound2);
+            Other.gameObject.SetActive(false);
+        }
+        else if (Other.tag == "Friend")
+        {
+            Friend += PointsPerFriend;
+            FriendText.text = "+ " + PointsPerFriend + "Friend: " + Friend;
+            //   SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
             Other.gameObject.SetActive(false);
         }
     }
