@@ -104,7 +104,8 @@ public class BoardManager : MonoBehaviour {
         InitialiseList();
         LayoutObjectAtRandom(WallTiles, WallCount.Minimum, WallCount.Maximum);
         LayoutObjectAtRandom(FoodTiles, FoodCount.Minimum, FoodCount.Maximum);
-        int EnemyCount = (int)Mathf.Log(level, 2f);
+        //set amount of enemies to spawn
+        int EnemyCount = (int)Mathf.Log(level*5, 2f);
 
         LayoutObjectAtRandom(enemyTiles, EnemyCount, EnemyCount);
 
