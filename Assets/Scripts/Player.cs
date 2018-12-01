@@ -107,9 +107,6 @@ public class Player : MovingObject {
     }
     protected override void AttemptMove<T>(int XDir, int YDir)
     {
-        Friend--;
-        FriendText.text = "Friends " + Friend;
-
         base.AttemptMove<T>(XDir, YDir);
 
         RaycastHit2D Hit;

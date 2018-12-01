@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         LevelImage = GameObject.Find("LevelImage");
         LevelText = GameObject.Find("LevelText").GetComponent<Text>();
 
-        LevelText.text = "Day " + Level;
+        LevelText.text = "Room " + Level;
         LevelImage.SetActive(true);
         Invoke("HideLevelImage", LevelStartDelay);
 
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        LevelText.text = "After " + Level + " number of days. You Starved.";
+        LevelText.text = "After " + Level + " number of rooms. You were caught.";
         LevelImage.SetActive(true);
         enabled = false;
     }
