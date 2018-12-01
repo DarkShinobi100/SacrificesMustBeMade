@@ -62,6 +62,33 @@ public class Player : MovingObject {
         Vertical = (int)Input.GetAxisRaw("Vertical");
 
 
+        //Animation controls
+        if (Horizontal < 0)
+        {
+            animator.SetInteger("DirectionX", -1);
+        }
+        else if (Horizontal > 0)
+        {
+            animator.SetInteger("DirectionX", 1);
+        }
+        else
+        {
+            animator.SetInteger("DirectionX", 0);
+        }
+
+        if (Vertical < 0)
+        {
+            animator.SetInteger("DirectionY", -1);
+        }
+        else if (Vertical > 0)
+        {
+            animator.SetInteger("DirectionY", 1);
+        }
+        else
+        {
+            animator.SetInteger("DirectionY", 0);
+        }
+        
         if (Horizontal!=0)
         {
             Vertical = 0;
@@ -118,7 +145,7 @@ public class Player : MovingObject {
         CheckIfGameOver();
 
         GameManager.Instance.PlayersTurn = false;
-
+        animator.SetTrigger("PlayerIdle");
     }
 
     private void OnTriggerEnter2D(Collider2D Other)
