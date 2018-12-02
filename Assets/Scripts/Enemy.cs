@@ -25,19 +25,8 @@ public class Enemy : MovingObject
 
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
-        //Check if skipMove is true, if so set it to false and skip this turn.
-        if (SkipMove)
-        {
-            SkipMove = false;
-            return;
-
-        }
-
         //Call the AttemptMove function from MovingObject.
         base.AttemptMove<T>(xDir, yDir);
-
-        //Now that Enemy has moved, set skipMove to true to skip next move.
-        SkipMove = true;
     }
 
     public void MoveEnemy()
@@ -45,17 +34,39 @@ public class Enemy : MovingObject
         int xDir = 0;
         int yDir = 0;
 
+        //update code to allow animations
 
-        if (Mathf.Abs(Target.position.x - transform.position.x) < float.Epsilon)
+        //check if player & enemy are in the same collumn
+        if(Mathf.Abs(Target.position.x - transform.position.x)< float.Epsilon)
         {
-            yDir = Target.position.y > transform.position.y ? 1 : -1;
+            //now check if our Y Co-ord is greater than or less than the player
+            if(Target.position.y > transform.position.y)
+            {
+                //if this is true then we need to move up 1
+                yDir = 1;
+            }
+            else
+            {
+                //otherwise move down
+                yDir = -1;
+            }
         }
         else
         {
-            xDir = Target.position.x > transform.position.x ? 1 : -1;
+            //now check if our x Co-ord is greater than or less than the player
+            if (Target.position.x > transform.position.x)
+            {
+                //if this is true then we need to move right 1
+                xDir = 1;
+            }
+            else
+            {
+                //otherwise move left
+                xDir = -1;
+            }
         }
 
-        AttemptMove<Player>(xDir, yDir);
+            AttemptMove<Player>(xDir, yDir);
     }
 
     protected override void OnCantMove<T>(T Component)

@@ -181,7 +181,7 @@ public class Player : MovingObject {
 
             //counter till freedom
             ExcapeCounter = ExcapeCounter - 1;
-            ExcapeText.text = "Rooma Till escape: " + ExcapeCounter;
+            ExcapeText.text = "Rooms Till escape: " + ExcapeCounter;
 
             if(ExcapeCounter == 0)
             {
