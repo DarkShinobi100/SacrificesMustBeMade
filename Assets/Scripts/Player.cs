@@ -212,7 +212,7 @@ public class Player : MovingObject {
             if(ExcapeCounter == 0)
             {
                 //display win screen
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(4);
             }
 
             enabled = false;
@@ -254,7 +254,7 @@ public class Player : MovingObject {
 
     private void Restart()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
     public void SacrificeFriend(int Loss)

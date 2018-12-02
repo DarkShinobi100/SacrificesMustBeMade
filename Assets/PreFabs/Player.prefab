@@ -130,8 +130,8 @@ MonoBehaviour:
   FriendText: {fileID: 0}
   StaminaText: {fileID: 0}
   ExcapeText: {fileID: 0}
-  MoveSound1: {fileID: 0}
-  MoveSound2: {fileID: 0}
+  MoveSound1: {fileID: 8300000, guid: 848a1bcef0c980a418a65e53dfabec51, type: 3}
+  MoveSound2: {fileID: 8300000, guid: 848a1bcef0c980a418a65e53dfabec51, type: 3}
   EatSound1: {fileID: 8300000, guid: 9928827853d207f4e87084bfff14d0f3, type: 3}
   EatSound2: {fileID: 8300000, guid: c7f2334cbd9b2244ab1c19b7e7d4e346, type: 3}
   DrinkSound1: {fileID: 8300000, guid: b3dfcffce40547844b1edacc7f37f70f, type: 3}

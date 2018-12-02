@@ -28,20 +28,21 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != null)
-        {
-            Destroy(gameObject);
-        }
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else if (Instance != null)
+            {
+                Destroy(gameObject);
+            }
 
-        DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
 
-        enemies = new List<Enemy>();
-        BoardScript = GetComponent<BoardManager>();
-        InitGame();
+            enemies = new List<Enemy>();
+            BoardScript = GetComponent<BoardManager>();
+            InitGame();
+        
     }
 
     void OnEnable()
@@ -70,18 +71,22 @@ public class GameManager : MonoBehaviour
 
     void InitGame()
     {
-        DoingSetUp = true;
 
-        LevelImage = GameObject.Find("LevelImage");
-        LevelText = GameObject.Find("LevelText").GetComponent<Text>();
+        if (Level != 6)
+        {
+            DoingSetUp = true;
 
-        LevelText.text = "Room " + Level;
-        LevelImage.SetActive(true);
-        Invoke("HideLevelImage", LevelStartDelay);
+            LevelImage = GameObject.Find("LevelImage");
+            LevelText = GameObject.Find("LevelText").GetComponent<Text>();
+
+            LevelText.text = "Room " + Level;
+            LevelImage.SetActive(true);
+            Invoke("HideLevelImage", LevelStartDelay);
 
 
-        enemies.Clear();
-        BoardScript.SetUpScene(Level);
+            enemies.Clear();
+            BoardScript.SetUpScene(Level);
+        }
     }
 
     private void HideLevelImage()
@@ -92,12 +97,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        LevelText.text = "After " + Level + " number of rooms. You were caught.";
+        LevelText.text = "After " + Level + " room(s). You were caught.";
         LevelImage.SetActive(true);
         enabled = false;
     }
 
-
+    
     // Update is called once per frame
     void Update()
     {

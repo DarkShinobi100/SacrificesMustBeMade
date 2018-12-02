@@ -25,53 +25,66 @@ public class Enemy : MovingObject
 
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
+        //Check if skipMove is true, if so set it to false and skip this turn.
+        if (SkipMove)
+        {
+            SkipMove = false;
+            return;
+
+        }
         //Call the AttemptMove function from MovingObject.
         base.AttemptMove<T>(xDir, yDir);
+
+        //Now that Enemy has moved, set skipMove to true to skip next move.
+        SkipMove = true;
     }
 
     public void MoveEnemy()
     {
-        int xDir = 0;
-        int yDir = 0;
-
-        //update code to allow animations
-
-        //check if player & enemy are in the same collumn
-        if(Mathf.Abs(Target.position.x - transform.position.x)< float.Epsilon)
+        if (Target) //check player exists
         {
-            //now check if our Y Co-ord is greater than or less than the player
-            if(Target.position.y > transform.position.y)
+            int xDir = 0;
+            int yDir = 0;
+
+            //update code to allow animations
+
+            //check if player & enemy are in the same collumn
+            if (Mathf.Abs(Target.position.x - transform.position.x) < float.Epsilon)
             {
-                //if this is true then we need to move up 1
-                yDir = 1;
-                animator.SetTrigger("MoveUp");
+                //now check if our Y Co-ord is greater than or less than the player
+                if (Target.position.y > transform.position.y)
+                {
+                    //if this is true then we need to move up 1
+                    yDir = 1;
+                    animator.SetTrigger("MoveUp");
+                }
+                else
+                {
+                    //otherwise move down
+                    yDir = -1;
+                    animator.SetTrigger("MoveDown");
+
+                }
             }
             else
             {
-                //otherwise move down
-                yDir = -1;
-                animator.SetTrigger("MoveDown");
-
+                //now check if our x Co-ord is greater than or less than the player
+                if (Target.position.x > transform.position.x)
+                {
+                    //if this is true then we need to move right 1
+                    xDir = 1;
+                    animator.SetTrigger("MoveRight");
+                }
+                else
+                {
+                    //otherwise move left
+                    xDir = -1;
+                    animator.SetTrigger("MoveLeft");
+                }
             }
-        }
-        else
-        {
-            //now check if our x Co-ord is greater than or less than the player
-            if (Target.position.x > transform.position.x)
-            {
-                //if this is true then we need to move right 1
-                xDir = 1;
-                animator.SetTrigger("MoveRight");
-            }
-            else
-            {
-                //otherwise move left
-                xDir = -1;
-                animator.SetTrigger("MoveLeft");
-            }
-        }
 
             AttemptMove<Player>(xDir, yDir);
+        }
     }
 
     protected override void OnCantMove<T>(T Component)
