@@ -44,11 +44,14 @@ public class Enemy : MovingObject
             {
                 //if this is true then we need to move up 1
                 yDir = 1;
+                animator.SetTrigger("MoveUp");
             }
             else
             {
                 //otherwise move down
                 yDir = -1;
+                animator.SetTrigger("MoveDown");
+
             }
         }
         else
@@ -58,11 +61,13 @@ public class Enemy : MovingObject
             {
                 //if this is true then we need to move right 1
                 xDir = 1;
+                animator.SetTrigger("MoveRight");
             }
             else
             {
                 //otherwise move left
                 xDir = -1;
+                animator.SetTrigger("MoveLeft");
             }
         }
 

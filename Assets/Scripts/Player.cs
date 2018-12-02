@@ -133,11 +133,39 @@ public class Player : MovingObject {
 
                 if (Mathf.Abs(X) > Mathf.Abs(Y))
                 {
-                    Horizontal = X > 0 ? 1 : -1;
+                   // Horizontal = X > 0 ? 1 : -1;
+                    if (X>0)
+                        { 
+                        Horizontal = 1;
+                        animator.SetInteger("DirectionX", 1);
+                        }
+                    else if(X<0)
+                        {
+                         Horizontal = -1;
+                         animator.SetInteger("DirectionX", -1);
+                        }
+                    else
+                        {
+                            animator.SetInteger("DirectionX", 0);
+                        }
                 }
                 else
                 {
                     Vertical = Y > 0 ? 1 : -1;
+                       if (Y>0)
+                        { 
+                        Horizontal = 1;
+                        animator.SetInteger("DirectionY", 1);
+                        }
+                    else if (Y<0)
+                        {
+                         Horizontal = -1;
+                         animator.SetInteger("DirectionY", -1);
+                        }
+                 else
+                        {
+                            animator.SetInteger("DirectionY", 0);
+                        }
                 }
 
             }
