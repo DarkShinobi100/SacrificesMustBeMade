@@ -13,6 +13,7 @@ public class Player : MovingObject {
     public float RestartLevelDelay = 1f;
     public Text FriendText;
     public Text StaminaText;
+    public Text ExcapeText;
 
 
     // public AudioClip MoveSound1;
@@ -27,6 +28,7 @@ public class Player : MovingObject {
     private Animator animator;
     private int Friend;
     private int Stamina;
+    private int ExcapeCounter;
 
     private Vector2 TouchOrigin = -Vector2.one; 
 
@@ -36,12 +38,19 @@ public class Player : MovingObject {
 
         animator = GetComponent<Animator>();
 
-        Friend = GameManager.Instance.PlayerFriendPoints;
+        //set up player stats
 
+        //friends
+        Friend = GameManager.Instance.PlayerFriendPoints;
         FriendText.text = "Friends: " + Friend;
 
+        //stamina
         Stamina = GameManager.Instance.PlayerStamina;
         StaminaText.text = "Stamina: " + Stamina;
+
+        //amount of rooms till you escape
+        ExcapeCounter = GameManager.Instance.ExcapeCounter;
+        ExcapeText.text = "Rooms Till escape: " + ExcapeCounter;
 
         base.Start();
 	}
@@ -50,6 +59,7 @@ public class Player : MovingObject {
     {
         GameManager.Instance.PlayerFriendPoints = Friend;
         GameManager.Instance.PlayerStamina = Stamina;
+        GameManager.Instance.ExcapeCounter = ExcapeCounter;
     }
 
 
@@ -167,6 +177,18 @@ public class Player : MovingObject {
     {
         if(Other.tag == "Exit")
         {
+            //TODO win animation
+
+            //counter till freedom
+            ExcapeCounter = ExcapeCounter - 1;
+            ExcapeText.text = "Rooma Till escape: " + ExcapeCounter;
+
+            if(ExcapeCounter == 0)
+            {
+                //display win screen
+                SceneManager.LoadScene(0);
+            }
+
             enabled = false;
             Invoke("Restart", RestartLevelDelay);
             

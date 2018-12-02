@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public BoardManager BoardScript;
     public int PlayerFriendPoints = 10;
     public int PlayerStamina = 100;
+    public int ExcapeCounter = 5;
 
     [HideInInspector] public bool PlayersTurn = true;
 
