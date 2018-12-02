@@ -16,13 +16,13 @@ public class Player : MovingObject {
     public Text ExcapeText;
 
 
-    // public AudioClip MoveSound1;
-    // public AudioClip MoveSound2;
-    // public AudioClip EatSound1;
-    // public AudioClip EatSound2;
-    // public AudioClip DrinkSound1;
-    // public AudioClip DrinkSound2;
-    // public AudioClip GameOverSound;
+     public AudioClip MoveSound1;
+     public AudioClip MoveSound2;
+     public AudioClip EatSound1;
+     public AudioClip EatSound2;
+     public AudioClip DrinkSound1;
+     public AudioClip DrinkSound2;
+     public AudioClip GameOverSound;
 
 
     private Animator animator;
@@ -185,7 +185,7 @@ public class Player : MovingObject {
         RaycastHit2D Hit;
         if (Move(XDir,YDir,out Hit))
         {
-      //      SoundManager.Instance.RandomiseSFX(MoveSound1, MoveSound2);
+            SoundManager.Instance.RandomiseSFX(MoveSound1, MoveSound2);
         }
 
         //costs 1 stamina to move
@@ -205,8 +205,6 @@ public class Player : MovingObject {
     {
         if(Other.tag == "Exit")
         {
-            //TODO win animation
-
             //counter till freedom
             ExcapeCounter = ExcapeCounter - 1;
             ExcapeText.text = "Rooms Till escape: " + ExcapeCounter;
@@ -226,7 +224,7 @@ public class Player : MovingObject {
         {
             Stamina += PointsPerFood;
             StaminaText.text = "+ " + PointsPerFood + "Stamina: " + Stamina;
-         //   SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
+            SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
             Other.gameObject.SetActive(false);
         }
 
@@ -234,14 +232,14 @@ public class Player : MovingObject {
         {
             Stamina += PointPerSoda;
             StaminaText.text = "+ " + PointPerSoda + "Stamina: " + Stamina;
-       //     SoundManager.Instance.RandomiseSFX(DrinkSound1, DrinkSound2);
+            SoundManager.Instance.RandomiseSFX(DrinkSound1, DrinkSound2);
             Other.gameObject.SetActive(false);
         }
         else if (Other.tag == "Friend")
         {
             Friend += PointsPerFriend;
             FriendText.text = "+ " + PointsPerFriend + "Friend: " + Friend;
-            //   SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
+               SoundManager.Instance.RandomiseSFX(EatSound1, EatSound2);
             Other.gameObject.SetActive(false);
         }
     }
@@ -277,8 +275,8 @@ public class Player : MovingObject {
         //you need friends AND stamina or you lose
         if(Stamina <= 0 || Friend <=0)
         {
-           // SoundManager.Instance.PlaySingle(GameOverSound);
-           // SoundManager.Instance.MusicSource.Stop();
+            SoundManager.Instance.PlaySingle(GameOverSound);
+            SoundManager.Instance.MusicSource.Stop();
             GameManager.Instance.GameOver();
         }
     }

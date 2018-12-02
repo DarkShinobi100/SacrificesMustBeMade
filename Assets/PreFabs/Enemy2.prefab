@@ -80,7 +80,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.63, y: 0.65}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -123,8 +123,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   PlayerDamage: 1
-  EnemyAttack1: {fileID: 0}
-  EnemyAttack2: {fileID: 0}
+  EnemyAttack1: {fileID: 8300000, guid: 671b623c9fcd3334cb3fabdf3f66accb, type: 3}
+  EnemyAttack2: {fileID: 8300000, guid: 8ccb5aa548776704fac7a79afdf28563, type: 3}
 --- !u!212 &212878933488679076
 SpriteRenderer:
   m_ObjectHideFlags: 1

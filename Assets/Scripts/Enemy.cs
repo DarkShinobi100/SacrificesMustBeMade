@@ -79,7 +79,7 @@ public class Enemy : MovingObject
         Player HitPlayer = Component as Player;
 
         animator.SetTrigger("EnemyAttack");
-   //     SoundManager.Instance.RandomiseSFX(EnemyAttack1, EnemyAttack2);
+        SoundManager.Instance.RandomiseSFX(EnemyAttack1, EnemyAttack2);
 
         HitPlayer.SacrificeFriend(PlayerDamage);
     }

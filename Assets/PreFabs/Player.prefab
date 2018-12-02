@@ -80,7 +80,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 1.0666667, y: 1.0666667}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -125,8 +125,18 @@ MonoBehaviour:
   WallDamage: 1
   PointsPerFood: 10
   PointPerSoda: 20
+  PointsPerFriend: 1
   RestartLevelDelay: 1
-  FoodText: {fileID: 0}
+  FriendText: {fileID: 0}
+  StaminaText: {fileID: 0}
+  ExcapeText: {fileID: 0}
+  MoveSound1: {fileID: 0}
+  MoveSound2: {fileID: 0}
+  EatSound1: {fileID: 8300000, guid: 9928827853d207f4e87084bfff14d0f3, type: 3}
+  EatSound2: {fileID: 8300000, guid: c7f2334cbd9b2244ab1c19b7e7d4e346, type: 3}
+  DrinkSound1: {fileID: 8300000, guid: b3dfcffce40547844b1edacc7f37f70f, type: 3}
+  DrinkSound2: {fileID: 8300000, guid: 2bd3b6a641145984fa767194deae1056, type: 3}
+  GameOverSound: {fileID: 8300000, guid: f3674a7d4f590a44b907527c9fa2b53e, type: 3}
 --- !u!212 &212868787268212512
 SpriteRenderer:
   m_ObjectHideFlags: 1
