@@ -87,6 +87,10 @@ public class GameManager : MonoBehaviour
             enemies.Clear();
             BoardScript.SetUpScene(Level);
         }
+        else
+        {//delete self if level = 6
+            GameManager.Destroy(this);
+        }
     }
 
     private void HideLevelImage()

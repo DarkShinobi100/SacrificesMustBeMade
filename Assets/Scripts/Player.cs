@@ -60,6 +60,8 @@ public class Player : MovingObject {
         GameManager.Instance.PlayerFriendPoints = Friend;
         GameManager.Instance.PlayerStamina = Stamina;
         GameManager.Instance.ExcapeCounter = ExcapeCounter;
+
+        
     }
 
 
@@ -112,64 +114,6 @@ public class Player : MovingObject {
             Vertical = 0;
         }
 
-#else
-
-        if (Input.touchCount>0)
-        {
-
-            Touch myTouch = Input.touches[0];
-
-            if(myTouch.phase == TouchPhase.Began)
-            {
-                TouchOrigin = myTouch.position;
-            }
-
-            else if(myTouch.phase == TouchPhase.Ended && TouchOrigin.x >= 0)
-            {
-                Vector2 TouchEnd = myTouch.position;
-                float X = TouchEnd.x - TouchOrigin.x;
-                float Y = TouchEnd.y - TouchOrigin.y;
-                TouchOrigin.x = -1;
-
-                if (Mathf.Abs(X) > Mathf.Abs(Y))
-                {
-                   // Horizontal = X > 0 ? 1 : -1;
-                    if (X>0)
-                        { 
-                        Horizontal = 1;
-                        animator.SetInteger("DirectionX", 1);
-                        }
-                    else if(X<0)
-                        {
-                         Horizontal = -1;
-                         animator.SetInteger("DirectionX", -1);
-                        }
-                    else
-                        {
-                            animator.SetInteger("DirectionX", 0);
-                        }
-                }
-                else
-                {
-                    Vertical = Y > 0 ? 1 : -1;
-                       if (Y>0)
-                        { 
-                        Horizontal = 1;
-                        animator.SetInteger("DirectionY", 1);
-                        }
-                    else if (Y<0)
-                        {
-                         Horizontal = -1;
-                         animator.SetInteger("DirectionY", -1);
-                        }
-                 else
-                        {
-                            animator.SetInteger("DirectionY", 0);
-                        }
-                }
-
-            }
-        }
 
 #endif
         if (Horizontal !=0 || Vertical !=0)
@@ -211,8 +155,14 @@ public class Player : MovingObject {
 
             if(ExcapeCounter == 0)
             {
+                //reset values for player in case they want to replay
+                Friend = 10;
+                Stamina = 100;
+                ExcapeCounter = 5;
+
                 //display win screen
                 SceneManager.LoadScene(4);
+                
             }
 
             enabled = false;
