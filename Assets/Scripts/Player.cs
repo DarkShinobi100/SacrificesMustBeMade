@@ -113,6 +113,36 @@ public class Player : MovingObject {
         {
             Vertical = 0;
         }
+#else
+
+        if (Input.touchCount>0)
+        {
+
+            Touch myTouch = Input.touches[0];
+
+            if(myTouch.phase == TouchPhase.Began)
+            {
+                TouchOrigin = myTouch.position;
+            }
+
+            else if(myTouch.phase == TouchPhase.Ended && TouchOrigin.x >= 0)
+            {
+                Vector2 TouchEnd = myTouch.position;
+                float X = TouchEnd.x - TouchOrigin.x;
+                float Y = TouchEnd.y - TouchOrigin.y;
+                TouchOrigin.x = -1;
+
+                if (Mathf.Abs(X) > Mathf.Abs(Y))
+                {
+                    Horizontal = X > 0 ? 1 : -1;
+                }
+                else
+                {
+                    Vertical = Y > 0 ? 1 : -1;
+                }
+
+            }
+        }
 
 
 #endif
